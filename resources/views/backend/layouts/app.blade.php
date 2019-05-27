@@ -44,7 +44,7 @@
                 @yield('content')
             </div>
 
-            <!-- @include('backend.layouts.partials.menubar') -->
+            @include('backend.layouts.partials.menubar')
         </div>
         <!-- END BASE -->
     @endif

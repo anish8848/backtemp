@@ -30,6 +30,13 @@ class BackendMenuCreator
      */
     public function create(View $view)
     {
+        $menu[] = [
+            'class' => false,
+            'route' => url('/home'),
+            'icon'  => 'md md-home',
+            'title' => 'Home'
+        ];
+        
 
 
         $view->with('allMenu', $menu);

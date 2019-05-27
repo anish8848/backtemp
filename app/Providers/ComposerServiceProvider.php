@@ -16,7 +16,7 @@ class ComposerServiceProvider extends ServiceProvider {
     {
         // Using class based composers...
         //For Backend Sidebar Menu
-        View::creator('backend.layouts.partials.menu', 'App\Http\ViewCreators\BackendMenuCreator');
+        View::creator('backend.layouts.partials.menubar', 'App\Http\ViewCreators\BackendMenuCreator');
     }
 
     /**
