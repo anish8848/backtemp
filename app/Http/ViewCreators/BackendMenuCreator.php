@@ -36,7 +36,14 @@ class BackendMenuCreator
             'icon'  => 'md md-home',
             'title' => 'Home'
         ];
-        
+
+        $menu[] = [
+            'class' => false,
+            'route' => route('page.create'),
+            'icon'  => 'md md-home',
+            'title' => 'Page'
+        ];
+
 
 
         $view->with('allMenu', $menu);

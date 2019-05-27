@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="text-bold text-center">Welcome to <span class="Nepalnic">Demo</span> Admin Panel.</h1>
+                        <h1 class="text-bold text-center">Welcome to <span class="Nepalnic"></span> Admin Panel.</h1>
                     </div>
                 </div>
             </div>
