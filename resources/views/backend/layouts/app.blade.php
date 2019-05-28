@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('backend/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/uploadifive/uploadifive.css')}}"/>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"> 
 
 
     <!-- Page Level Styles -->

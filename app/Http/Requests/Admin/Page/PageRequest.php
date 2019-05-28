@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Page;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class PageRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,15 +24,7 @@ class PageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'image|max:4096|required'
+            //
         ];
     }
-
-    public function data()
-  {
-    $data =[
-      'image'           =>$this->get('image'),
-    ];
-    return $data;
-  }
 }

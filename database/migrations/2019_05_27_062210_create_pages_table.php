@@ -21,11 +21,18 @@ class CreatePagesTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->text('sub_description')->nullable();
+            $table->string('meta_key')->nullable();
+            $table->text('meta_description')->nullable();
             $table->integer('has_sub_content')->nullable();
-            $table->enum('is_active',array('yes','no'))->default('no');
+            $table->enum('is_active',array('yes','no'))->nullable()->default('no');
             $table->string('image')->nullable();
             $table->integer('order')->nullable();
             $table->string('display_type')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('last_updated_by')->nullable();
+            $table->integer('last_deleted_by')->nullable();
+            $table->enum('is_deleted',array('yes','no'))->nullable()->default('no');
+            $table->timestamps('deleted_at');
             $table->timestamps();
         });
     }
