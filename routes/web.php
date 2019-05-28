@@ -27,6 +27,7 @@ Route::group(['as'=>'page.', 'prefix'=>'page' ], function(){
 // Route::get('','PageController@index')->name('index');
 Route::get('create','PageController@create')->name('create');
 Route::post('','PageController@store')->name('store');
+Route::post('/delete_image','PageController@store')->name('delete_image');
 // Route::put('{slider}','PageController@update')->name('update');
 // Route::get('{slider}/edit','PageController@edit')->name('edit');
 // Route::delete('{slider}','PageController@delete')->name('destroy');

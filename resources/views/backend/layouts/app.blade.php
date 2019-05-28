@@ -83,7 +83,7 @@
             'auto': true, // Automatically upload a file when it's added to the queue
             'buttonClass': false, // A class to add to the UploadiFive button
             'buttonText': 'Upload Image', // The text that appears on the UploadiFive button
-            'checkScript': @php url('backend/uploadifive/check-exists.php'); @endphp, // Path to the script that checks for existing file names
+            'checkScript': "@php echo url('backend/uploadifive/check-exists.php'); @endphp", // Path to the script that checks for existing file names
             'dnd': true, // Allow drag and drop into the queue
             'dropTarget': false, // Selector for the drop target
             'fileSizeLimit': '153600', // Maximum allowed size of files to upload
@@ -91,9 +91,9 @@
             'width': 180,
             'height': 30,
             'formData': {
-                'timestamp': '@php $timestamp; @endphp',
+                'timestamp': '@php echo $timestamp; @endphp',
                 'targetFolder': '/uploads/blogs/',
-                'token': '@php @md5('unique_salt' . $timestamp); @endphp'
+                'token': '@php echo @md5('unique_salt' . $timestamp); @endphp'
             },
             'method': 'post', // The method to use when submitting the upload
             'multi': true, // Set to true to allow multiple file selections
@@ -103,25 +103,15 @@
             'simUploadLimit': 0, // The maximum number of files to upload at once
             'truncateLength': 0, // The length to truncate the file names to
             'uploadLimit': 10, // The maximum number of files you can upload
-            'uploadScript': @php url('backend/uploadifive/uploadifive.php'); @endphp,
+            'uploadScript': "@php echo url('backend/uploadifive/uploadifive.php'); @endphp",
             onUploadComplete: function (file, data, response) {
                 if ($('#fileList').val() != '') {
                     $('#fileList').val($('#fileList').val() + ':' + data);
                 } else {//alert('blank');
                     $('#fileList').val(data);
                 }
-
-                //alert($('#fileList').val());
-//                $('#submit').removeAttr('disabled');
-//                $('#submit').val('SUBMIT');
-
-                //console.log(data);
-//                if ($('#fileList').val() !== '') {//alert('full');
-//                    $('#fileList').val($('#fileList').val() + ':' + data);
-//                } else {//alert('blank');
-//                    $('#fileList').val(data);
-//                }
-                //                                        $('#submitDetails').val('Submit');
+                imagePath = "@php echo base_path(); @endphp";
+                $('.imagethumbs-form').prepend('<div class="imagethumb-form additional-file-input" id="add-image1" title="menson"> <a class="close-msg" title="Delete" id="deleteImg">Delete</a> <a href="#" title="' + data + '" class="img-wrap"><img src="' + "@php echo url('/'); @endphp" + '/public/backend/createThumb/create_thumb.php?src=' + imagePath + '/uploads/blogs/' + data + '&w=150&h=150" alt="' + data + '" /></a></div>');
             }
         });
     });
@@ -134,9 +124,15 @@
             var _img = $(this).next().attr("title");//alert(_img);
             var _this = $(this).parent();
             delete_image(_img);
-
-            //$(this).parent().fadeOut(2500);
-            //alert($('#fileList').val());
+            $.post("{{ route('page.delete_image') }}", {imgName: _img},
+                    function (data) {
+                        $("i.info").text(data).fadeOut(1000);
+                        _this.fadeOut(1000, function () {
+                            _this.remove();
+                            $("i.info").text('');
+                            $("i.info").removeAttr('style');
+                        });
+                    });
         });
     });
 

@@ -24,7 +24,7 @@ class PageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'image|max:4096'
+            'image' => 'image|max:4096|required'
         ];
     }
 
